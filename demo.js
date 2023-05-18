@@ -13,17 +13,17 @@ console.log(`FreqCalc.calculateSteps('G', 4) === -2`,
 FreqCalc.calculateSteps('G', 4))
 console.assert(FreqCalc.calculateSteps('G', 4) === -2, 'failed')
 
-console.log(`FreqCalc.calculateFrequencyByNote('C', 0) == '16.35'`,
-  FreqCalc.calculateFrequencyByNote('C', 0).toFixed(2))
-console.assert(FreqCalc.calculateFrequencyByNote('C', 0).toFixed(2) == 16.35, 'failed')
+console.log(`FreqCalc.calculateFrequencyByNote('C', 0) === '16.35'`,
+  FreqCalc.calculateFrequencyByNote('C', 0))
+console.assert(FreqCalc.calculateFrequencyByNote('C', 0) === 16.35, 'failed')
 
 console.log(`FreqCalc.calculateFrequencyByStep(-12) === '220.00'`,
-  FreqCalc.calculateFrequencyByStep(-12).toFixed(2))
-console.assert(FreqCalc.calculateFrequencyByStep(-12).toFixed(2) === '220.00', 'failed')
+  FreqCalc.calculateFrequencyByStep(-12))
+console.assert(FreqCalc.calculateFrequencyByStep(-12) === '220.00', 'failed')
 
-console.log(`FreqCalc.calculateStepsFromFrequency(415.30) === -1.00`,
+console.log(`FreqCalc.calculateStepsFromFrequency(415.30) === -1`,
   FreqCalc.calculateStepsFromFrequency(415.30).toFixed(0))
-console.assert(FreqCalc.calculateStepsFromFrequency(415.30).toFixed(2) === -1.00, 'failed')
+console.assert(FreqCalc.calculateStepsFromFrequency(415.30) === -1, 'failed')
 
 console.log(`FreqCalc.calculateNoteBySteps(-12) === 'A'`,
   FreqCalc.calculateNoteBySteps(-12))
