@@ -1,6 +1,6 @@
 {
   "name": "music-frequency-calculator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "small, simple library to calculate the frequency of a music note",
   "main": "music-frequency-calculator-compiled.js",
   "scripts": {

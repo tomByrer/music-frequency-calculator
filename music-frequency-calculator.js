@@ -16,13 +16,6 @@
  * Convert a frequency to an octave:
  * octiveByFreq(440); // -> 0
  */
-
-/**
- * The base frequency, we'll use A4 since this is a nice whole number
- * @type {Number}
- */
-const _base = 440.0; // An A-note in the fourth octave
-
 /**
  * The amount of half steps a note is from A
  * @type {Object}
@@ -44,6 +37,23 @@ const _steps = {
 
 export default class FreqCalc {
 	/**
+ * The base frequency, we'll use A4 since this is a nice whole number
+ * @type {Number}
+ */
+  static #baseFreq = 440.0
+  get baseFreq() {
+    return this.#baseFreq
+  }
+  static setBaseFreq(n) {
+    this.#baseFreq = n
+		console.log('baseFreq set', this.#baseFreq)
+  }
+  // set baseFreq(n) {
+  //   this.#baseFreq = n
+	// 	console.log('baseFreq set', this.#baseFreq)
+  // }
+
+	/**
 	 * Calculate the amount of half steps between A4 and a given note and octave
 	 * @param  {String} note   The note
 	 * @param  {Number} octave The octave
@@ -61,7 +71,7 @@ export default class FreqCalc {
 	 * @return {Number}       The calculated frequency
 	 */
 	static freqByStep(steps) {
-		return (_base * Math.pow(Math.pow(2, (1/12)), steps)).toFixed(5)
+		return (this.#baseFreq * Math.pow(Math.pow(2, (1/12)), steps)).toFixed(5)
 	}
 
 	/**
@@ -83,7 +93,7 @@ export default class FreqCalc {
 	 * @return {Number}            The amount of half steps
 	 */
 	static stepsFromFreq(frequency, round = false) {
-		const steps = 12 * Math.log(frequency / _base) / Math.log(2)
+		const steps = 12 * Math.log(frequency / this.#baseFreq) / Math.log(2)
 
 		if (round) {
 			return Math.round(steps)
