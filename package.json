@@ -1,13 +1,13 @@
 {
   "name": "music-frequency-calculator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "small, simple library to calculate the frequency of a music note",
   "main": "music-frequency-calculator-compiled.js",
   "scripts": {
     "build": "babel music-frequency-calculator.js --out-file music-frequency-calculator-compiled.js --presets=@babel/preset-env",
     "prepublish": "npm run build",
     "postversion": "git push; git push --tags; npm publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bun demo.test.js"
   },
   "repository": {
     "type": "git",
