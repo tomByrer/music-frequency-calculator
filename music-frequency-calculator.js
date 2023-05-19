@@ -41,12 +41,11 @@ export default class FreqCalc {
  * @type {Number}
  */
   static #baseFreq = 440.0
-  get baseFreq() {
+  static getBaseFreq() {
     return this.#baseFreq
   }
   static setBaseFreq(n) {
     this.#baseFreq = n
-		console.log('baseFreq set', this.#baseFreq)
   }
   // set baseFreq(n) {
   //   this.#baseFreq = n
