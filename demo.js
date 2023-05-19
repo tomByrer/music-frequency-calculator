@@ -43,6 +43,7 @@ console.assert(FreqCalc.octiveByFreq(440, false) === 4, 'failed')
 
 console.info('Change baseFreq')
 FreqCalc.setBaseFreq(390.0)
+console.log('baseFreq is now: ', FreqCalc.getBaseFreq())
 
 console.log(`FreqCalc.freqByStep(-12) == 195.00000`,
   FreqCalc.freqByStep(-12))
