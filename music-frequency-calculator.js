@@ -8,13 +8,13 @@
  * Examples:
  *
  * Convert a note to a frequency:
- * calculateFrequencyByNote(A, 4); // -> 440
+ * freqByNote(A, 4); // -> 440
  *
  * Convert a frequency to a note:
- * calculateNoteByFrequency(440); // -> A
+ * noteByFreq440); // -> A
  *
  * Convert a frequency to an octave:
- * calculateOctaveByFrequency(440); // -> 0
+ * octiveByFreq(440); // -> 0
  */
 
 /**
@@ -49,7 +49,7 @@ export default class FreqCalc {
 	 * @param  {Number} octave The octave
 	 * @return {Number}        The number of half steps
 	 */
-	static calculateSteps(note, octave) {
+	static stepsByNote(note, octave) {
 		return ((4 - octave) * -12) + _steps[note];
 	}
 
@@ -60,8 +60,8 @@ export default class FreqCalc {
 	 * @param  {Number} steps The number of half steps
 	 * @return {Number}       The calculated frequency
 	 */
-	static calculateFrequencyByStep(steps) {
-		return _base * Math.pow(Math.pow(2, (1/12)), steps)
+	static freqByStep(steps) {
+		return (_base * Math.pow(Math.pow(2, (1/12)), steps)).toFixed(5)
 	}
 
 	/**
@@ -70,8 +70,10 @@ export default class FreqCalc {
 	 * @param  {Number} octave The octave
 	 * @return {Number}        The frequency of the note
 	 */
-	static calculateFrequencyByNote(note, octave) {
-		return this.calculateFrequencyByStep(this.calculateSteps(note, octave))
+	static freqByNote(note, octave) {
+		return Number(this.freqByStep(
+			this.stepsByNote(note, octave))
+			).toFixed(5)
 	}
 
 	/**
@@ -80,7 +82,7 @@ export default class FreqCalc {
 	 * @param  {Boolean} round     Should the steps be rounded
 	 * @return {Number}            The amount of half steps
 	 */
-	static calculateStepsFromFrequency(frequency, round = false) {
+	static stepsFromFreq(frequency, round = false) {
 		const steps = 12 * Math.log(frequency / _base) / Math.log(2)
 
 		if (round) {
@@ -95,7 +97,7 @@ export default class FreqCalc {
 	 * @param  {Number} steps The amount of half steps from A4
 	 * @return {String}       The note
 	 */
-	static calculateNoteBySteps(steps) {
+	static noteBySteps(steps) {
 		const octave = steps / 12;
 		const s = steps - ((steps < 0 ? Math.ceil(octave) : Math.floor(octave)) * 12);
 
@@ -108,7 +110,7 @@ export default class FreqCalc {
 	 * @param  {Boolean} relativeToA4 Should the octave be relative to A4
 	 * @return {Number}               The octave
 	 */
-	static calculateOctaveBySteps(steps, relativeToA4 = true) {
+	static octiveBySteps(steps, relativeToA4 = true) {
 		const octave = steps / 12;
 
 		if (relativeToA4) {
@@ -123,8 +125,8 @@ export default class FreqCalc {
 	 * @param  {Number} frequency The frequency of a note
 	 * @return {String}           The note
 	 */
-	static calculateNoteByFrequency(frequency) {
-		return this.calculateNoteBySteps(this.calculateStepsFromFrequency(frequency))
+	static noteByFreq(frequency) {
+		return this.noteBySteps(this.stepsFromFreq(frequency))
 	}
 
 	/**
@@ -133,7 +135,7 @@ export default class FreqCalc {
 	 * @param  {Boolean} relativeToA4 Should the octave be relative to A4
 	 * @return {Number}               The octave
 	 */
-	static calculateOctaveByFrequency(frequency, relativeToA4 = true) {
-		return this.calculateOctaveBySteps(this.calculateStepsFromFrequency(frequency), relativeToA4);
+	static octiveByFreq(frequency, relativeToA4 = true) {
+		return this.octiveBySteps(this.stepsFromFreq(frequency), relativeToA4);
 	}
 }

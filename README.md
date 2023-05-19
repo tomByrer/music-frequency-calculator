@@ -11,67 +11,67 @@ import FreqCalc from 'music-frequency-calculator'
 ## calculateSteps
 You can calculate the number of half steps between the base note (A4) and a given note:
 ```js
-FreqCalc.calculateSteps('G', 4) // -> -2
+FreqCalc.stepsByNote('G', 4) // -> -2
 ```
 
-## calculateFrequencyByNote
+## freqByNote
 Once imported you can calculate the frequency of a note by supplying the note name and octave:
 ```js
-FreqCalc.calculateFrequencyByNote('C', 0) // -> 16.35Hz
+FreqCalc.freqByNote('C', 0) // -> 16.35160
 ```
 
-## calculateFrequencyByStep
+## freqByStep
 If you know the number of half steps, you can also calculate the frequency based on these steps, this can be a negative number if the note is below the base note (A4):
 ```js
-FreqCalc.calculateFrequencyByStep(-12) // -> 220.00Hz
+FreqCalc.freqByStep(-12) // -> 220.00000
 ```
 
 ## calculateStepsFromFrequency
 You calculate the amount of half steps between a frequency and A4 (440Hz). If you want to round the steps, you can add `true` as the second parameter:
 ```js
-FreqCalc.calculateStepsFromFrequency(415.30) // -> -1.0001958238467235
+FreqCalc.stepsFromFreq(415.30) // -> -1.0001958238467235
 ```
 
 or
 
 ```js
-FreqCalc.calculateStepsFromFrequency(415.30, true) // -> -1
+FreqCalc.stepsFromFreq(415.30, true) // -> -1
 ```
 
 ## calculateNoteBySteps
 You can calculate a note based on the the distance in half steps of A4:
 ```js
-FreqCalc.calculateNoteBySteps(-12) // -> A
+FreqCalc.noteBySteps(-12) // -> A
 ```
 
 ## calculateOctaveBySteps
 You can calculate an octave based on the the distance in half steps of A4, if you don't want the octave to be relative to A4, add `false` as the second parameter:
 ```js
-FreqCalc.calculateOctaveBySteps(-12) // -> -1
+FreqCalc.octiveBySteps(-12) // -> -1
 ```
 
 or
 
 ```js
-FreqCalc.calculateOctaveBySteps(-12, false) // -> -3
+FreqCalc.octiveBySteps(-12, false) // -> -3
 ```
 
 ## calculateNoteByFrequency
 You can calculate the note of a frequency:
 ```js
-FreqCalc.calculateNoteByFrequency(440) // -> A
+FreqCalc.noteByFreq440) // -> A
 ```
 
-## calculateOctaveByFrequency
+## octiveByFreq
 You can calculate the octave of a frequency. If you don't want the octave to be relative to A4, add `false` as the second parameter:
 ```js
-FreqCalc.calculateOctaveByFrequency(440) // -> 0
+FreqCalc.octiveByFreq(440) // -> 0
 ```
 
 or
 
 ```js
-FreqCalc.calculateOctaveByFrequency(440, false) // -> 4
+FreqCalc.octiveByFreq(440, false) // -> 4
 ```
 
 ## TODO
